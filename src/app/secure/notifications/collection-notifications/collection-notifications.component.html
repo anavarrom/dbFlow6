@@ -1,0 +1,98 @@
+<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+    <div fxFlex="grow 75" fxLayoutAlign="start center">
+        <button mat-raised-button color="primary" type="submit" (click)="newNotification()" i18n="@@new">
+            <mat-icon>add</mat-icon> New
+        </button>
+    </div>
+    <div fxFlex="grow 25" fxLayoutAlign="end center">
+        <button mat-button (click)="moreNotifications()" i18n="@@more">
+            <mat-icon>navigate_next</mat-icon> More
+        </button>
+    </div>
+</div>
+
+<mat-divider style="margin-top: 15px;"></mat-divider>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let notif of notificationStore.notifications" [expanded]="false" hideToggle="true">
+        <mat-expansion-panel-header collapsedHeight="140px;" expandedHeight="140px;">
+            <div fxLayout="row" fxFlexFill fxLayoutAlign="start start">
+                <div fxFlex="grow 20" style="padding: 5px;">
+                    {{notif.subject}}
+                </div>
+                <div fxFlex="grow 10">
+                    <mat-form-field appearance="standard" class="patata">
+                        <mat-label>Due date</mat-label>
+                        <input matInput placeholder="Placeholder" value="{{notif.dueDate}}" readonly="true">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="grow 30">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Labeled as</mat-label>
+                        <mat-chip-list #labelList>
+                            <mat-chip *ngFor="let label of notif.labels">
+                                {{label}}
+                            </mat-chip>
+                            <input [matChipInputFor]="labelList" />
+                        </mat-chip-list>
+                    </mat-form-field>|
+                </div>
+            </div>
+
+
+            <!-- From {{notif.from}} - {{notif.subject}}
+            <mat-chip-list>
+                <mat-chip color="primary">
+                    {{notif.dueDate}}
+                </mat-chip>
+            </mat-chip-list> -->
+            <!-- <mat-panel-title>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description> -->
+        </mat-expansion-panel-header>
+
+        {{notif.body}}
+        <!-- <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="grow 50" fxLayoutAlign="start center">
+                {{notif.body}}
+            </div>
+            <div fxFlex="grow 50" fxLayoutAlign="end center" fxFlexFill>
+                <button mat-button (click)="moreNotifications()" i18n="@@more" class="botoncito">
+                <mat-icon>navigate_next</mat-icon> More
+            </button>
+            </div>
+        </div> -->
+    </mat-expansion-panel>
+</mat-accordion>
+
+<!-- <mat-tab-group>
+    <mat-tab i18n="@@sent" label="Sent">
+        <mat-list>
+            <mat-list-item *ngFor="let notif of messageStore.notifications">
+                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+                    <div fxFlex="grow 50" fxLayoutAlign="start center">
+                        {{notif.body}}
+                    </div>
+                    <div fxFlex="grow 50" fxLayoutAlign="end center" fxFlexFill>
+                        <button mat-button (click)="moreNotifications()" i18n="@@more" class="botoncito">
+                            <mat-icon>navigate_next</mat-icon> More
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab i18n="@@received" label="Received">
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let notif of messageStore.notifications" [expanded]="false" hideToggle="true">
+                <mat-expansion-panel-header>
+                    {{notif.from}} - {{notif.subject}}
+                </mat-expansion-panel-header>
+
+                {{notif.body}}
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+</mat-tab-group> -->

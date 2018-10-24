@@ -1,0 +1,37 @@
+<div class="login_container">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="25">
+            <mat-card>
+                <mat-card-title>
+                    Login
+                </mat-card-title>
+                <form [formGroup]="form" (ngSubmit)="login(form.value)">
+                    <div fxLayout="column">
+                        <mat-form-field>
+                            <input matInput id="username" name="username" placeholder="Usuario" [formControl]="form.controls['username']">
+                            <mat-hint>Escriba un nombre de usuario</mat-hint>
+                            <mat-error *ngIf="fh.hasError(form, 'username')">
+                                Por favor, escriba un nombre de usuario válido
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput id="password" name="password" placeholder="Password" [formControl]="form.controls['password']">
+                            <mat-hint>Escriba una contraseña</mat-hint>
+                            <mat-error *ngIf="fh.hasError(form, 'password')">
+                                Por favor, escriba una contraseña válida
+                            </mat-error>
+                        </mat-form-field>
+                        <br/>
+                        <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Acceder</button> -->
+                        <button mat-raised-button color="primary" type="submit">Acceder</button>
+                        <!-- Don't have an account? <a [routerLink]="'/signup'">Sign up</a> -->
+                    </div>
+                </form>
+                <div fxLayout="column">
+                    <br/>
+                    <button mat-raised-button color="warn" (click)="loginWithGoogle()">Acceder con Google</button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.message}}</h2>
+<div fxLayout="column" fxLayoutGap="20px" style="min-width: 600px;">
+    <span>
+    {{data.detail}}
+  </span>
+
+    <span>
+    {{data.stack}}
+  </span>
+    <!-- stack: string; -->
+
+    <div class="input-row" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+        <button mat-button [mat-dialog-close]="true">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+</div>

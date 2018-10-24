@@ -1,0 +1,11 @@
+.mat-form-field-underline {
+    background-color: red;
+}
+
+.mat-form-field-appearance-standard .mat-form-field-underline {
+    background-color: red;
+}
+
+.mat-form-field-disabled .mat-form-field-underline {
+    background-color: red;
+}
