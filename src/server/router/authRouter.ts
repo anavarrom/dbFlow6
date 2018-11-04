@@ -129,6 +129,7 @@ class AuthRouter {
     public routes() {
         this.router.post('/login', this.login);
         this.router.post('/google', this.loginWithGoogle);
+        this.router.get('/ping', this.ping);
         this.router.use(jwtMiddleware({
             secret: config.auth.TOKEN_SECRET,
             credentialsRequired: false
