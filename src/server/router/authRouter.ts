@@ -117,6 +117,13 @@ class AuthRouter {
             return res.status(401).send(authException);
         }
     }
+    public async ping(request: Request, response: Response) {
+        const result = {
+            data: 'Ping correctly executed'
+        };
+
+        return response.json(result);
+    }
 
     // set up our routes
     public routes() {
